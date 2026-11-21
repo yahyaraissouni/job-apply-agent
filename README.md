@@ -34,6 +34,13 @@ Your `.env`, `profile.yaml`, `facts.yaml`, passwords and data stay on your machi
 
 To run it every 10 minutes on a Linux server, fill in `deploy/*.service` and enable the timers with systemd.
 
+## Where it runs
+
+- **Your own computer** (macOS or Linux; Windows through WSL). Nothing else needed.
+- **Night mode**: before bed, leave it plugged in and on, run `./night.sh` (8 h, 3 browsers in parallel by default; `./night.sh 10 4` for 10 h with 4). It keeps the computer awake while it applies at full speed, then stops by itself. The daily cap still applies.
+- **A server** only if you want it 24/7 with your computer off (a small VPS or Oracle Cloud's free tier; see `deploy/`). LinkedIn often blocks cloud IPs, so Easy Apply works best from home.
+- Not on Anthropic's cloud: the Claude API only does the thinking; the browser and your logins live on your machine.
+
 ## Cost per application
 
 Measured on 150 real submitted applications: a form takes **about 45 agent steps** (median), 6 of them on Sonnet when the agent gets stuck, the rest on Haiku. That is **about $0.15 per submitted application**, including the tailored CV (estimated from Claude's prices; long Workday forms cost more). Postings that fail midway also cost calls, so **budget about $0.30 per application sent**: 30 applications/day ≈ $9/day.

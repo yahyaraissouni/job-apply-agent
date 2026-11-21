@@ -17,7 +17,7 @@ Run `python3 check.py`. It lists the setup steps as OK / TODO.
 
 Open with one short message, before anything else:
 
-> "Let's set up your job apply agent. It's a guided onboarding: about 10 steps, one at a time, ~15 minutes. You'll need your CV, an email inbox, and a Claude API key. Ready?"
+> "Let's set up your job apply agent. It's a guided onboarding: about 11 steps, one at a time, ~15 minutes. You'll need your CV, an email inbox, and a Claude API key. Ready?"
 
 Then go **one step at a time**: say which step it is (e.g. "Step 4 of 10: Claude API key"), why it's needed in one line, how to do it, wait for the user, check it worked (`python3 check.py`), then move on. Never dump all the steps at once. Skip steps already OK.
 
@@ -39,6 +39,8 @@ Then go **one step at a time**: say which step it is (e.g. "Step 4 of 10: Claude
 8. **What to look for (`searches.yaml`)**: job keywords, locations (preferred first), `must_title` (whole words: `\bintern\b`, so "Internal" doesn't match), fields to exclude (`NOT_FIELD` in `ats.py`), and the caps. Start low (≤30/day) until the first runs look right. Then `mkdir -p data && touch data/.searches_reviewed`.
 9. **LinkedIn Easy Apply (optional)**: ask if they want it. If yes, they run `./linkedin-login.sh`: a browser window opens (on a server: a noVNC web page, see README) and **they log in themselves**; it closes by itself and saves the session. Mention that automating LinkedIn may break its terms and can get the account restricted.
 10. **Dry run**: `./run.sh --dry-run --limit 1` (stops before the final Submit). Show them the tailored CV (`data/cvs/…`), the log (`data/bot.log`) and the last screenshot (`data/shots/`). Ask before the first real run.
+
+11. **Night mode**: offer it: "Want it to run at full speed tonight while you're not using the computer? Leave it plugged in and on, and run `./night.sh` before bed. It keeps the computer awake, applies for 8 hours with 3 browsers in parallel, then stops." Remind them the daily cap and the API spend limit still apply.
 
 Finish with: what's set up, how to run (`./run.sh`, `./run-easy.sh`), how to see results (`report.py`), and that they can schedule it (`deploy/`).
 
