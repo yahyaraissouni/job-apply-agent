@@ -11,18 +11,13 @@
 
 It never solves captchas, never enters payment, SIN/SSN or passport numbers, and never invents experience.
 
-## Setup
-
-Needs Python 3.10+, [tectonic](https://tectonic-typesetting.github.io) (LaTeX) and a Claude API key.
+## Install (as a Claude Code skill)
 
 ```bash
-git clone https://github.com/yahyaraissouni/job-apply-agent && cd job-apply-agent
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/playwright install --with-deps chromium
-cp .env.example .env                    # add your ANTHROPIC_API_KEY and inbox
-cp profile.example.yaml profile.yaml    # your answers to form questions
-cp facts.example.yaml facts.yaml        # the only facts your CV may contain
-./set-mail.sh                           # email app password, to read verification codes
+git clone https://github.com/yahyaraissouni/job-apply-agent ~/.claude/skills/job-apply-agent
 ```
+
+Then in Claude Code type **`/job-apply-agent`**. It runs a guided onboarding, one step at a time: install, Claude API key, email inbox for verification codes, your CV turned into `facts.yaml`, your answers in `profile.yaml`, what jobs to look for, optional LinkedIn login, and a dry run. Keys and passwords are typed in hidden prompts, never in the chat. `python3 check.py` shows what's left.
 
 Your `.env`, `profile.yaml`, `facts.yaml`, passwords and data stay on your machine (`.gitignore`).
 
@@ -31,10 +26,11 @@ Your `.env`, `profile.yaml`, `facts.yaml`, passwords and data stay on your machi
 ```bash
 ./run.sh --dry-run        # does everything but stops before the final Submit
 ./run.sh                  # applies for real
+./run-easy.sh             # LinkedIn Easy Apply (after ./linkedin-login.sh)
 .venv/bin/python report.py
 ```
 
-**LinkedIn Easy Apply** needs you to log in once in the agent's browser: run `./login-screen.sh` on the server, open the noVNC page it shows and log in yourself (never copy cookies: LinkedIn kills copied sessions). Then `./run-easy.sh`. On a cloud server, LinkedIn may block the server's IP: `tunnel.sh` routes it through your home connection (`EASY_PROXY`).
+**LinkedIn: no `li_at` cookie.** Copied cookies get killed by LinkedIn and log you out everywhere. Instead `./linkedin-login.sh` opens LinkedIn in the agent's own browser and you log in yourself once; the session is saved. On a server without a screen it opens a noVNC web page: on your computer run `ssh -N -L 6080:127.0.0.1:6080 you@your-server` and open http://localhost:6080/vnc.html. LinkedIn may block cloud IPs: `tunnel.sh` routes it through your home connection (`EASY_PROXY`).
 
 To run it every 10 minutes on a Linux server, fill in `deploy/*.service` and enable the timers with systemd.
 

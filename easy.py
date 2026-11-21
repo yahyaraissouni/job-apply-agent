@@ -41,7 +41,7 @@ def run(dry_run: bool, limit: int | None) -> None:
             page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded")
             time.sleep(4)
             if re.search(r"/login|/checkpoint|/authwall|/uas/", page.url):
-                bot.log(f"STOPPED: LinkedIn wants a new login ({page.url[:80]}). Run login-screen.sh again.")
+                bot.log(f"STOPPED: LinkedIn wants a new login ({page.url[:80]}). Run ./linkedin-login.sh again.")
                 (HERE / "data" / "STOPPED_EASY").write_text(page.url)
                 return
             for loc in S["locations"]:
