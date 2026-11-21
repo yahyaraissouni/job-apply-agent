@@ -1,6 +1,6 @@
 ---
 name: job-apply-agent
-description: AI agent that applies to jobs automatically. Finds postings (Greenhouse, Lever, Ashby, LinkedIn), builds a one-page CV tailored to each posting from the user's facts only, then fills and submits the application on the company site (account creation, email verification codes, questions) or via LinkedIn Easy Apply. Use when the user wants to auto-apply to jobs or internships, set it up (guided onboarding), run it, or check what was applied.
+description: AI agent that applies to jobs automatically. Finds postings (Greenhouse, Lever, Ashby, LinkedIn), builds an ATS-proof one-page CV tailored to each posting (the posting's keywords, plain single-column text that applicant tracking systems parse) from the user's facts only, then fills and submits the application on the company site (account creation, email verification codes, questions) or via LinkedIn Easy Apply. Use when the user wants to auto-apply to jobs or internships, set it up (guided onboarding), run it, or check what was applied.
 ---
 
 # Job Apply Agent

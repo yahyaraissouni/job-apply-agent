@@ -1,11 +1,11 @@
 # Job Apply Agent
 
-**An AI agent that applies to jobs for you, with a CV rewritten for every single posting.** For each job it reads the description, rebuilds your one-page CV around that posting's keywords (from your real facts only, never invented), then opens the company's site and fills the whole application like a person would: creates the account, reads the email verification code, answers the questions, clicks Submit. Also does LinkedIn Easy Apply. **About $0.15–0.30 per application** with your own Claude API key.
+**An AI agent that applies to jobs for you, with an anti-ATS CV rewritten for every single posting.** For each job it reads the description, rebuilds your one-page CV around that posting's keywords so it gets past ATS filters (applicant tracking systems that reject CVs before a human sees them), from your real facts only, never invented, then opens the company's site and fills the whole application like a person would: creates the account, reads the email verification code, answers the questions, clicks Submit. Also does LinkedIn Easy Apply. **About $0.15–0.30 per application** with your own Claude API key.
 
 ## How it works
 
 1. **Find**: company job boards (Greenhouse, Lever, Ashby) and LinkedIn's public job search, filtered by title, field and location (`searches.yaml`).
-2. **Tailor**: for each posting, Claude picks and orders lines from your `facts.yaml` and bolds the posting's keywords. It never writes new text, so the CV stays true. Built as a one-page PDF with LaTeX.
+2. **Tailor (anti-ATS)**: for each posting, Claude picks the lines and skills from your `facts.yaml` that use the posting's own keywords, puts the most relevant first and bolds them. The PDF is ATS-friendly: one page, one column, real selectable text, standard section titles (Education, Experience, Skills), no images or tables. It never writes new text, so the CV stays true.
 3. **Apply**: a browser agent (Playwright + Claude) sees the page and fills it step by step. It answers from your `profile.yaml`, reads verification codes from your inbox, and skips anything it can't answer truthfully.
 4. **Track**: every posting is stored in `data/jobs.db`. `report.py` shows what was applied, skipped and why.
 
