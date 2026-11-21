@@ -1,6 +1,6 @@
 # Job Apply Agent
 
-**An AI agent that applies to jobs for you.** It finds postings, writes a one-page CV tailored to each posting from your real facts only, then opens the company's application site and fills the whole form like a person would: it creates the account, reads the email verification code, answers the questions and clicks Submit. It also does LinkedIn Easy Apply. You bring your own Claude API key.
+**An AI agent that applies to jobs for you, with a CV rewritten for every single posting.** For each job it reads the description, rebuilds your one-page CV around that posting's keywords (from your real facts only, never invented), then opens the company's site and fills the whole application like a person would: creates the account, reads the email verification code, answers the questions, clicks Submit. Also does LinkedIn Easy Apply. **About $0.15–0.30 per application** with your own Claude API key.
 
 ## How it works
 
@@ -34,9 +34,11 @@ Your `.env`, `profile.yaml`, `facts.yaml`, passwords and data stay on your machi
 
 To run it every 10 minutes on a Linux server, fill in `deploy/*.service` and enable the timers with systemd.
 
-## Cost
+## Cost per application
 
-Each application is many Claude calls (one per form step, with a screenshot). Expect tens of cents per application, more on long forms. **Set a spend limit on your API key** and start with the low caps in `searches.yaml`.
+Measured on 150 real submitted applications: a form takes **about 45 agent steps** (median), 6 of them on Sonnet when the agent gets stuck, the rest on Haiku. That is **about $0.15 per submitted application**, including the tailored CV (estimated from Claude's prices; long Workday forms cost more). Postings that fail midway also cost calls, so **budget about $0.30 per application sent**: 30 applications/day ≈ $9/day.
+
+**Set a monthly spend limit on your API key** (platform.claude.com → Settings → Limits) and use a key that nothing else depends on.
 
 ## Use it responsibly
 
