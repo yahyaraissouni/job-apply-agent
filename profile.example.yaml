@@ -1,0 +1,50 @@
+# Copy to profile.yaml and replace with YOUR answers. This file stays on your machine (.gitignore).
+email: alex.martin@example.com   # the email you apply with (same inbox as MAIL_USER)
+
+# Fixed answers for form questions. First matching pattern wins (regex, case-insensitive, matched
+# against the question label). Anything else is answered by the AI from facts_for_questions only.
+answers:
+  - {q: "first name", a: "Alex"}
+  - {q: "last name|surname|family name", a: "Martin"}
+  - {q: "full name|^name$", a: "Alex Martin"}
+  - {q: "e-?mail", a: "alex.martin@example.com"}
+  - {q: "phone country code|country code", a: "Canada (+1)"}
+  - {q: "mobile phone|phone number|^phone", a: "5145550100"}
+  - {q: "city|current location|where are you (based|located)", a: "Montreal, Quebec, Canada"}
+  - {q: "zip|postal", a: "H2X 1Y4"}
+  - {q: "street|address line|^address", a: "123 Example Street"}
+  - {q: "province|state", a: "Quebec"}
+  - {q: "linkedin", a: "https://www.linkedin.com/in/your-profile/"}
+  - {q: "github|portfolio|website|personal site", a: "https://github.com/your-username"}
+  - {q: "currently (enrolled|pursuing)|are you a student|enrolled in", a: "Yes"}
+  - {q: "highest (level of )?education|degree", a: "Bachelor's Degree"}
+  - {q: "university|school|institution", a: "Example University"}
+  - {q: "field of study|major|program", a: "Computer Science"}
+  - {q: "commut|relocat|on-?site|in[- ]office|hybrid|full[- ]time", a: "Yes"}
+  - {q: "graduation (date|year)|expected (to )?graduat|when (will|do) you graduate", a: "May 2028"}
+  - {q: "start date|available to start|when can you start", a: "Immediately"}
+  - {q: "english", a: "Native or bilingual"}
+  - {q: "french|français", a: "Professional working proficiency"}
+  - {q: "gender|pronoun|race|ethnic|veteran|disabilit|indigenous|visible minority|sexual orientation", a: "Prefer not to say"}
+  - {q: "how did you hear", a: "LinkedIn"}
+  - {q: "salary|compensation|pay expectation|hourly rate", a: "Open / as per the posted range"}
+  - {q: "background check|agree|consent|acknowledge|certify", a: "Yes"}
+
+# Everything the AI may use to answer other questions. Only true facts: it never invents.
+facts_for_questions: |
+  Name Alex Martin, 123 Example Street, Montreal QC H2X 1Y4, Canada. Phone 514-555-0100, email alex.martin@example.com.
+  Student at Example University, Bachelor in Computer Science, since Sept 2025.
+  Expected graduation: May 2028 (if that isn't a choice: December 2028).
+  GPA: 3.7/4.0.
+  Available for 4, 8 or 12 months, can start immediately. Full-time internships are fine.
+  Experience: Software Developer Intern at Example Corp (summer 2026): Python, FastAPI, PostgreSQL, Docker.
+  No experience with: Kubernetes, AWS, .NET, PHP.
+  Languages: English native, French professional.
+  Willing to relocate anywhere in Canada or the USA.
+
+# Work authorization per country of the job (added to the facts for each application).
+work_authorization:
+  CA: >-
+    Canada: legally authorized to work in Canada, does NOT require sponsorship.
+  US: >-
+    USA: NOT authorized to work in the US; WILL require visa sponsorship.

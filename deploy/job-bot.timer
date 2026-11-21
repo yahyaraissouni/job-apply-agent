@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the job bot every 10 minutes (a run still going blocks the next one)
+
+[Timer]
+OnCalendar=*:0/10
+RandomizedDelaySec=1min
+Persistent=false
+
+[Install]
+WantedBy=timers.target

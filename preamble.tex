@@ -1,0 +1,26 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\pagestyle{empty}
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\titleformat{\section}{\vspace{-5pt}\large\bfseries}{}{0em}{}[\titlerule\vspace{-5pt}]
+\newcommand{\entry}[4]{\item[]\begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2 \\ \textit{#3} & \textit{#4}\end{tabular*}\vspace{-6pt}}
+\newcommand{\head}[2]{\item[]\begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2\end{tabular*}\vspace{-6pt}}
+\newcommand{\bstart}{\begin{itemize}[leftmargin=0.15in,label={\textbullet},itemsep=-1pt,topsep=2pt]}
+\newcommand{\bend}{\end{itemize}\vspace{-3pt}}
+\newcommand{\sstart}{\begin{itemize}[leftmargin=0in,label={},itemsep=0pt]}
+\newcommand{\send}{\end{itemize}}

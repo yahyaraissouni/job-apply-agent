@@ -1,0 +1,57 @@
+# Copy to facts.yaml. The ONLY facts a CV may contain: for each posting the AI picks and orders
+# these lines and bolds the posting's keywords. It never writes new text. Stays on your machine.
+
+header:
+  name: Alex Martin
+  line: >-
+    Montreal, QC $|$ alex.martin@example.com $|$ (514) 555-0100 $|$ \href{https://www.linkedin.com/in/your-profile/}{LinkedIn} $|$
+    \href{https://github.com/your-username}{github.com/your-username}
+
+education:
+  - school: Example University
+    place: Montreal, QC
+    degree: Bachelor in Computer Science
+    dates: Sept. 2025 -- Present
+
+experience:
+  - id: examplecorp                 # any short id
+    title: Software Developer Intern -- Example Corp
+    place: Montreal, QC
+    dates: May 2026 -- Aug. 2026
+    subtitles:                      # the AI picks the best one for the posting
+      backend: Backend, APIs and data
+      ai: AI and data tools
+    min_bullets: 3
+    max_bullets: 5
+    bullets:                        # write several versions; at most one bullet per group is used
+      - {id: api, group: build, text: "Built REST APIs in Python/FastAPI on PostgreSQL used by three internal teams."}
+      - {id: api_ts, group: build, text: "Built TypeScript services and REST APIs on PostgreSQL used by three internal teams."}
+      - {id: tests, group: quality, text: "Wrote unit tests with pytest and set up GitHub Actions CI on every push."}
+      - {id: data, group: data, text: "Built a data pipeline that loads daily sales files into PostgreSQL and flags missing rows."}
+      - {id: llm, group: ai, text: "Added an LLM-based search over internal documents with embeddings and a vector database."}
+      - {id: docker, group: ops, text: "Containerized the services with Docker and deployed them on Linux servers."}
+
+other_experience: ""                # e.g. "restaurant server; tutoring" (empty = hidden)
+
+projects:
+  - {id: chess, name: "Chess Engine", tech: "C++", link: "https://github.com/your-username/chess",
+     text: "Chess engine with alpha-beta search that beats beginner bots."}
+  - {id: budget, name: "Budget App", tech: "React, Node.js", link: "",
+     text: "Web app that categorizes bank transactions from CSV exports."}
+  - {id: hackathon, name: "Hackathon Winner", tech: "", link: "", short: true,
+     text: "first place at Example Hack 2026 with a bus-delay predictor."}
+
+leadership:                         # optional; empty list = section hidden
+  - "\\textbf{Computer Science Club:} organized weekly coding workshops."
+
+# The AI may only use skills from this pool (it chooses and orders them per posting).
+skills:
+  Languages: [Python, TypeScript, JavaScript, SQL, Java, C++]
+  Frameworks: [FastAPI, React, Node.js, REST APIs]
+  Data / AI: [PostgreSQL, LLMs, embeddings, vector search, pandas]
+  Tools: [Git, GitHub Actions, Docker, Linux, pytest]
+
+languages_line: "English: native $|$ French: professional"
+interests_line: "Running, chess, photography"
+
+banned_phrases: []                  # the CV build fails if any of these appears

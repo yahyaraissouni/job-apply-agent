@@ -1,0 +1,10 @@
+# your personal files and runtime data never leave your machine
+.env
+profile.yaml
+facts.yaml
+secrets/
+data/
+out/
+.venv/
+__pycache__/
+*.pdf

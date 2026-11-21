@@ -1,0 +1,9 @@
+[Unit]
+Description=Run the Easy Apply worker every 10 minutes
+
+[Timer]
+OnCalendar=*:5/10
+RandomizedDelaySec=1min
+
+[Install]
+WantedBy=timers.target

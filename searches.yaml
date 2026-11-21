@@ -1,0 +1,38 @@
+# What the bot looks for. Example: internships in Canada + USA, Montreal and New York first. Edit freely.
+keywords:
+  - software engineer intern
+  - software developer intern
+  - AI engineer intern
+  - machine learning intern
+  - quant trader intern
+  - quantitative trading intern
+  - quant developer intern
+  - quantitative research intern
+  - data science intern
+  - data engineering intern
+  - backend intern
+  - full stack intern
+  - IT intern
+  - computer science intern
+  - stagiaire informatique
+  - stagiaire développeur
+
+# preferred locations first (regex on the job location)
+preferred: ["montr", "new york|nyc|\\bny\\b"]
+
+# LinkedIn public search, in this order; each with the keywords above
+locations:
+  - "Montreal, Quebec, Canada"
+  - "New York, New York, United States"
+  - "Canada"
+  - "United States"
+
+# a posting is kept only if its title matches this
+must_title: "\\bintern(s|ship|ships)?\\b|\\bstagiaire|\\bco-?op\\b|\\bstage (d'été|d'ete|été|ete|d'hiver|hiver|d'automne|automne|en)\\b"
+# and dropped if it matches this
+skip_titles: "senior|sr\\.|lead|principal|staff|manager|director|unpaid|volunteer|bénévole|ph\\.?d|master'?s|\\bmba\\b|high school"
+
+# Each application costs Claude API calls (see README). Start small.
+max_applications_per_run: 10   # per worker
+workers: 1
+max_applications_per_day: 30

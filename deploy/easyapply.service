@@ -1,0 +1,12 @@
+[Unit]
+Description=Job apply agent (LinkedIn Easy Apply)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/job-apply-agent
+ExecStart=/home/YOUR_USER/job-apply-agent/run-easy.sh
+TimeoutStartSec=2h
+MemoryMax=3G
+Nice=10
